@@ -28,17 +28,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
         btnRegister = findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(this);
+        //btnRegister.setOnClickListener(this);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         if (v == btnLogin) {
-            Intent intent1 = new Intent(this, LoginActivity.class);
-            startActivity(intent1);
-        } else if (v == btnRegister) {
-            Intent intent2 = new Intent(this, RegisterActivity.class);
-            startActivity(intent2);
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         }
     }
 }
