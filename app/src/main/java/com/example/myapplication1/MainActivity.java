@@ -42,9 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     void Login(){
         Toast.makeText(this, "Login clicked", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     void Register(){
         Toast.makeText(this, "Register clicked", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }
