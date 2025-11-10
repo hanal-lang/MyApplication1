@@ -25,28 +25,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
+
         btnRegister = findViewById(R.id.btnRegister);
-        //btnRegister.setOnClickListener(this);
-        //btnRegister.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-        //        startActivity(intent);
-        //    }
-        //});
-        btnRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-            startActivity(intent);
-        });
+        btnRegister.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == btnLogin) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
+        if (v == btnLogin)
+            Login();
+        else if (v == btnRegister)
+            Register();
+    }
+    void Login(){
+        Toast.makeText(this, "Login clicked", Toast.LENGTH_SHORT).show();
+    }
+
+    void Register(){
+        Toast.makeText(this, "Register clicked", Toast.LENGTH_SHORT).show();
     }
 }
