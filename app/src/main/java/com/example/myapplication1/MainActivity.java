@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnLogin, btnRegister;
+    Button btnLogin, btnRegister, btnLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,23 +31,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
+
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(this);
+
+        initalize();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initalize();
+    }
+
+    private void initalize() {
+        var sp = getSharedPreferences("user_details", MODE_PRIVATE);
+        var spName = sp.getString("username", "");
+        if(spName==null || spName.isBlank())
+            btnLogout.setVisibility(View.GONE);
+        else
+            btnLogout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onClick(View v) {
         if (v == btnLogin)
-            Login();
+            login();
         else if (v == btnRegister)
-            Register();
+            register();
+        else if (v == btnLogout)
+            logout();
     }
-    void Login(){
-        Toast.makeText(this, "Login clicked", Toast.LENGTH_SHORT).show();
+
+    void logout(){
+        var sp = getSharedPreferences("user_details", MODE_PRIVATE);
+        var spEditor = sp.edit();
+        spEditor.clear();
+        spEditor.commit();
+        btnLogout.setVisibility(View.GONE);
+    }
+    void login(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
-    void Register(){
-        Toast.makeText(this, "Register clicked", Toast.LENGTH_SHORT).show();
+    void register(){
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
