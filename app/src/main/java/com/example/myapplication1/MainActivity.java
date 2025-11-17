@@ -2,6 +2,8 @@ package com.example.myapplication1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -70,6 +72,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     void about(){
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.mnuLogin) {
+            login();
+            return true;
+        } else if (id == R.id.mnuRegister) {
+            register();
+            return true;
+        } else if (id == R.id.mnuAbout) {
+            about();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     void logout(){
