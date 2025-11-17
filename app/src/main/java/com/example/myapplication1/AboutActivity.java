@@ -80,7 +80,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
-    private void sendSms() {
+    private void sendSms()  {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:0523455408"));
         intent.putExtra("sms_body", "message");
