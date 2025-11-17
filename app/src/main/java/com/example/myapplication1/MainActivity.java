@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnLogin, btnRegister, btnLogout;
+    Button btnLogin, btnRegister, btnLogout, btnAbout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(this);
 
+        btnAbout = findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(this);
         initalize();
     }
 
@@ -61,6 +63,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             register();
         else if (v == btnLogout)
             logout();
+        else if (v == btnAbout)
+            about();
+    }
+
+    void about(){
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 
     void logout(){

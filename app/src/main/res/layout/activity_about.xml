@@ -5,37 +5,45 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".AboutActivity"
     android:orientation="vertical"
     android:gravity="center">
 
->
-
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnCallUs"
         android:layout_marginHorizontal="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:text="Call Us" />
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnTextUs"
         android:layout_marginHorizontal="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"/>
+        android:text="Send SMS" />
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnEmailUs"
         android:layout_marginHorizontal="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:visibility="gone"/>
+        android:text="Email Us" />
     <Button
-        android:id="@+id/btnAbout"
+        android:id="@+id/btnTakePicture"
         android:layout_marginHorizontal="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About"/>
-
-
+        android:text="Take Picture" />
+    <ImageView
+        android:id="@+id/imgImage1"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_marginHorizontal="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close" />
 </LinearLayout>
