@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btnLogin, btnRegister, btnLogout, btnAbout;
+    MyCustomView cvMyCustomView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnAbout = findViewById(R.id.btnAbout);
         btnAbout.setOnClickListener(this);
+
+        cvMyCustomView = findViewById(R.id.cvMyCustomView);
+        cvMyCustomView.setName("Bla Bla Bla");
+        cvMyCustomView.setDetails("s;f;dlf jdslkf sdlkf sdlkjfh ksjdfh sdkf ksdjf sgfsdkjf dks fsdjkfg sdjkfgsdjkf");
+        cvMyCustomView.setImageResourceId(R.drawable.cv_image_foreground);
+        cvMyCustomView.setOnClickListener(this);
+
         initalize();
     }
 
@@ -67,8 +75,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             logout();
         else if (v == btnAbout)
             about();
+        else if (v == cvMyCustomView)
+            cvClicked();
     }
 
+    void cvClicked(){
+        cvMyCustomView.ToggleDetails();
+    }
     void about(){
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
